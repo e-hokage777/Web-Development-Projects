@@ -1,0 +1,331 @@
+body {
+
+	margin: 0px;
+	font-family: "Helvetica", sans-serif;
+	color: white;
+	
+}
+
+header {
+	background-image: url("imgs/netflix_background.jpg");
+	height: 100vh;
+	width: 100%;
+	position: relative;
+	display: flex;
+	flex-direction: column;
+	border-bottom: 7px solid #222;
+}
+
+
+
+#foreground {
+	height: 100%;
+	width: 100%;
+	background-color: black;
+	opacity: 0.7;
+	position: absolute;
+	top: 0;
+	left: 0;
+	z-index: 2;
+}
+
+.center-box{
+	color: white;
+	/*width: 100%;*/
+	text-align: center;
+	font-weight: bold;
+	z-index: 2;
+	/*position: relative;*/
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	justify-content: center;
+	height: 100%;
+}
+
+.big-text{
+	font-size: 3em;
+	margin: 0px 0px 24px 0px;
+}
+
+.small-text{
+	font-size: 1.7em;
+	margin: 0px 0px 12px 0px;
+}
+
+.smallest-text{
+	font-size: 1.2em;
+}
+
+.email-field{
+	width: 80%;
+	display: flex;
+	justify-content: center;
+	height: 50px;
+}
+
+.email-field input{
+	padding: 8px;
+	margin: 0;
+	width: 70%;
+	max-width: 450px;
+	font-size: 1.1em;
+	border: none;
+	outline: none;
+}
+
+.email-field button{
+	padding: 8px;
+	margin: 0;
+	color: white;
+	width: 20%;
+	max-width: 150px;
+	min-width: 120px;
+	font-size: 1.1em;
+}
+
+
+.navbar {
+	display: flex;
+	flex-direction: row;
+	justify-content: space-between;
+	flex-wrap: wrap;
+	padding: 20px;
+	z-index: 3;
+	text-align: center;
+}
+
+
+.nav_items_bar{
+	display: flex;
+	gap: 20px;
+}
+
+
+.netflix_logo {
+	width: 108px;
+	height: 32px;
+}
+
+.lang_select{
+	background: transparent;
+	color: white;
+	margin: 0px;
+	outline: none;
+}
+
+.lang_select option{
+	color: black;
+}
+
+.drop-down{
+	border: solid 1px white;
+	padding: 0 8px;
+	word-spacing: -10px;
+}
+
+.btn{
+	cursor: pointer;
+}
+
+.btn:hover{
+	filter: brightness(1.5);
+}
+
+.btn:active{
+	filter: brightness(0.5);
+	transform: scale(1.05);
+}
+
+.btn-red{
+	background-color: #e50914;
+	color: white;
+	border: none;
+}
+
+
+/*sign in button styles*/
+
+.header-btn{
+	padding: 10px;
+	font-size: 1.1em;
+	border: none;
+	text-align: center;
+}
+
+
+.card{
+	background-color: black;
+	border-bottom: 7px solid #222;
+	padding: 60px 60px;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	/*flex-wrap: wrap;*/
+}
+
+.card-text{
+	align-self: left;
+	width: 47%;
+
+}
+
+.card-img{
+	width: 47%;
+	position: relative;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+}
+
+.card-img img{
+	width: 100%;
+	position: relative;
+	z-index: 3;
+}
+
+.card-title{
+	font-size: 2.6em;
+	font-weight: bold;
+}
+
+.card-body{
+	font-size: 1.3em;
+}
+
+.card:nth-child(even){
+	flex-direction: row-reverse;
+}
+
+#faq-section{
+	background-color: black;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	flex-direction: column;
+	padding: 80px 40px 5px 40px;
+}
+
+#faq-section .faq-title{
+	font-size: 2.9em;
+	text-align: center;
+	font-weight: bold;
+	width: 70%;
+}
+
+#faq-section .faq-questions{
+	width: 75%;
+}
+
+#faq-section .faq-questions ul{
+	list-style: none;
+	font-size: 2em;
+	width: 100%;
+	padding: 0px;
+}
+
+#faq-section .faq-questions ul li{
+	/*background-color: blue;*/
+	padding: 20px;
+	margin-bottom: 10px;
+	/*text-align: left;*/
+	background-color: #222;
+	display: flex;
+	justify-content: space-between;
+}
+
+.email-field-below{
+	background-color: black;
+	text-align: center;
+	padding: 10px 20px 40px 20px;
+}
+
+.email-field-below .email-field{
+	width: 100%;
+}
+
+
+#content{
+	border-bottom: 7px solid #222;
+}
+
+footer{
+	background-color: black;
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	padding: 60px 0px;
+}
+
+footer p{
+	color: #757575;
+}
+
+footer a{
+	text-decoration: none;
+	color: #757575;
+}
+
+footer a:hover{
+	text-decoration: underline;
+}
+
+footer .footer-item{
+	width: 70%;
+}
+
+.footer-lists{
+	display: grid;
+	grid-template-columns: auto auto auto auto;
+	grid-row-gap: 20px;
+	font-size: 13px;
+	margin: 25px 0px 25px 0px;
+}
+
+/* styles for footer links */
+.footer-lists a{
+	width: fit-content;
+}
+
+.tv_vid{
+	position: absolute;
+	width: 70%;
+	height: 50%;
+	top: 23%;
+}
+
+
+
+
+/*media queries*/
+@media screen and (max-width: 951px){
+	.center-box .email-field{
+		flex-direction: column;
+		align-items: center;
+		justify-content: space-between;
+		height: 110px;
+	}
+
+	.center-box .email-field input{
+		height: 40px;
+	}
+
+	.card{
+		flex-direction: column;
+		text-align: center;
+	}
+
+	.card:nth-child(even){
+		flex-direction: column;
+	}
+
+	.card-text, .card-img{
+		width: 100%;
+	}
+
+	.footer-lists{
+		grid-template-columns: auto auto auto;
+	}
+
+
+}

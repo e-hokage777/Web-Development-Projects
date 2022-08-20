@@ -1,0 +1,151 @@
+<!doctype html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+		<meta http-equiv="X-UA-Compatible" content="IE=edge">
+		<link rel="stylesheet" type="text/css" href="styles.css">
+		<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css" integrity="sha512-KfkfwYDsLkIlwQp6LFnl8zNdLGxu9YAA1QvwINks4PhcElQSvqcyVLLD9aMhXd13uQjoXtEKNosOWaZqXgel0g==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+		<title>Netflix-GH</title>
+	</head>
+
+	<body>
+		<header>
+				<nav class="navbar">
+					<div class="navbar_netflix">
+						<img src="imgs/Logonetflix.png" alt="logo" class="netflix_logo ">
+					</div>
+					<div class="nav_items_bar">
+						<div class="nav-item">
+							<div class="drop-down">
+								<i class="fa fa-globe" aria-hidden="true"></i>
+								<select class="header-btn lang_select">
+									<option value="English" selected>English</option>
+									<option value="Twi">Twi</option>
+								</select>
+							</div>
+						</div>
+						<div class="nav_item">
+							<button class="btn-sign-in btn-red header-btn btn">Sign in</button>
+						</div>
+					</div>
+				</nav>
+			<div id="foreground">
+			</div>
+			<div class="center-box">
+				<p class="big-text">
+					Unlimited movies, TV <br>shows, and more.
+				</p>
+				<p class="small-text">
+					Watch anywhere. Cancel anytime.
+				</p>
+				<p class="smallest-text">
+					Ready to watch? Enter your email to create or restart your membership
+				</p>
+				<div class="email-field">
+					<input type="email" placeholder="Email Address">
+					<button class="get-started-btn btn-red btn">Get Started <i class="fa fa-angle-right" aria-hidden="true"></i></button>
+				</div>
+			</div>
+<!-- 			<div class="background">
+				<img class="background_image" src="imgs/netflix_background.jpg">
+			</div> -->
+		</header>
+
+		<!-- main section here -->
+		<section id="content">
+			<div class="card-deck">
+				<div class="card">
+					<div class="card-text">
+						<p class="card-title">Enjoy on your TV.</p>
+						<p class="card-body">Watch on Smart TVs, Playstation, Xbox, Chromecast, Apple TV, Blu-ray players, and more.</p>
+					</div>
+					<div class="card-img">
+						<img src="imgs/tv.png">
+						<video class="tv_vid" autoplay muted playsiline loop >
+							<source src="vids/netflix_tv_vid.m4v" type="video/mp4">
+						</video>
+					</div>
+				</div>
+				<div class="card">
+					<div class="card-text">
+						<p class="card-title">Download your shows to watch offline.</p>
+						<p class="card-body">Save your favorites easily and always have something to watch.</p>
+					</div>
+					<div class="card-img">
+						<img src="imgs/mobile.jpg">
+					</div>
+				</div>
+				<div class="card">
+					<div class="card-text">
+						<p class="card-title">Watch everywhere.</p>
+						<p class="card-body">Stream unlimited movies and TV shows on your phone, tablet, laptop, and TV.</p>
+					</div>
+					<div class="card-img">
+						<!-- <img src="imgs/mobile.jpg"> -->
+					</div>
+				</div>
+				<div class="card">
+					<div class="card-text">
+						<p class="card-title">Create profiles for kids.</p>
+						<p class="card-body">Send kids on adventures with their favorite characters in a space made just for them—free with your membership.</p>
+					</div>
+					<div class="card-img">
+						<img src="imgs/kids.png">
+					</div>
+				</div>
+			</div>
+
+			<!-- FAQ section -->
+			<div id="faq-section">
+				<div class="faq-title">
+					Frequently Asked Questions
+				</div>
+				<div class="faq-questions">
+					<ul>
+						<li class="question"><span>What is Netflix?</span><i class="fa-solid fa-plus"></i></li>
+						<li class="question"><span>How much does Netflix cost?</span><i class="fa-solid fa-plus"></i></li>
+						<li class="question"><span>Where can I watch?</span><i class="fa-solid fa-plus"></i></li>
+						<li class="question"><span>How do I cancel?</span><i class="fa-solid fa-plus"></i></li>
+						<li class="question"><span>What can I watch on Netflix?</span><i class="fa-solid fa-plus"></i></li>
+						<li class="question"><span>Is Netflix good for kids?</span><i class="fa-solid fa-plus"></i></li>
+					</ul>
+				</div>
+			</div>
+			<div class="email-field-below">
+				<p class="smallest-text">
+					Ready to watch? Enter your email to create or restart your membership
+				</p>
+				<div class="email-field">
+					<input type="email" placeholder="Email Address">
+					<button class="get-started-btn btn-red btn">Get Started <i class="fa fa-angle-right" aria-hidden="true"></i></button>
+				</div>
+			</div>
+		</section>
+		<footer>
+			<div class="footer-item">
+				<a href="#">Questions? Contact us.</a>
+			</div>
+			<div class="footer-lists footer-item">
+				<a href="#">FAQ</a>
+				<a href="#">Media Center</a>
+				<a href="#">Ways to Watch</a>
+				<a href="#">Cookie Preferences</a>
+				<a href="#">Speed Test</a>
+				<a href="#">Help Center</a>
+				<a href="#">Investor Relations</a>
+				<a href="#">Terms of Us</a>
+				<a href="#">Corporate Information</a>
+				<a href="#">Legal Notices</a>
+				<a href="#">Account</a>
+				<a href="#">Jobs</a>
+				<a href="#">Privacy</a>
+				<a href="#">Contact Us</a>
+				<a href="#">Only on Netflix</a>
+			</div>
+			<div class="footer-item">
+				<p>Neflix Ghana</p>
+			</div>
+		</footer>
+	</body>
+</html>
