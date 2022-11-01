@@ -1,0 +1,183 @@
+@import url("https://fonts.googleapis.com/css2?family=Poppins&display=swap");
+
+/** creating necessary variables **/
+:root {
+  --bg-color: #2c4046;
+  --text-color: #ffffff;
+  --title-text-size: 1.5rem;
+  --highlight-bg-color: rgb(201, 163, 37);
+  --main-font: "Poppins", sans-serif;
+  --btn-color: rgb(92, 93, 95);
+  --pad-color-1: #0dd6f6;
+  --pad-color-2: #15f60d;
+  --pad-color-3: #f60d3d;
+  --panel-border-color: rgb(24, 187, 228);
+}
+
+body {
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: var(--bg-color);
+  color: var(--text-color);
+  font-family: var(--main-font);
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+i,
+svg {
+  pointer-events: none;
+}
+
+.drum-panel {
+  /* margin: auto; */
+  width: 1000px;
+  display: flex;
+  flex-direction: column;
+  border: solid 3px var(--panel-border-color);
+  padding: 2rem 0;
+  border-radius: 10px;
+}
+
+.controls {
+  display: flex;
+  gap: 10px;
+  align-items: center;
+}
+
+.controls h1 {
+  font-size: var(--title-text-size);
+  width: 90px;
+  display: flex;
+  justify-content: start;
+  align-items: center;
+  text-transform: uppercase;
+}
+
+.controls select {
+  width: 100px;
+  height: 30px;
+  font-size: 0.7rem;
+}
+
+.controls .mute {
+  width: 40px;
+  height: 40px;
+  background-color: white;
+  color: var(--bg-color);
+  border: none;
+  border-radius: 50%;
+  cursor: pointer;
+}
+
+.mute.active {
+  background-color: var(--highlight-bg-color);
+}
+
+.track-panel {
+  width: 90%;
+  margin: 1rem auto;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.pad-panel {
+  display: flex;
+  gap: 10px;
+}
+
+.pad {
+  width: 70px;
+  height: 70px;
+  border: solid 1px;
+  cursor: pointer;
+  box-shadow: 0 0 10px 1px rgba(0, 0, 0, 0.3);
+}
+
+.drum-controls {
+  margin: auto;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  justify-content: center;
+  align-items: center;
+  margin-top: 2rem;
+}
+
+.drum-controls .play {
+  width: 70px;
+  height: 70px;
+  margin-top: 1rem;
+  background-color: white;
+  color: var(--bg-color);
+  border-radius: 50%;
+  border: none;
+  font-size: 2rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
+  transition: all 0.3s;
+}
+
+.drum-controls .play.active {
+  background-color: var(--highlight-bg-color);
+}
+
+.drum-controls .tempo {
+  text-align: center;
+}
+
+.drum-controls .tempo .tempo-slider {
+  appearance: none;
+  padding: 0.1rem;
+  width: 350px;
+  border-radius: 500px;
+  accent-color: var(--bg-color);
+}
+
+.kick-pad {
+  border-color: var(--pad-color-1);
+}
+.snare-pad {
+  border-color: var(--pad-color-2);
+}
+.hihat-pad {
+  border-color: var(--pad-color-3);
+}
+
+.kick-pad.active {
+  border-color: var(--pad-color-1);
+  background-color: var(--pad-color-1);
+}
+.snare-pad.active {
+  border-color: var(--pad-color-2);
+  background-color: var(--pad-color-2);
+}
+.hihat-pad.active {
+  border-color: var(--pad-color-3);
+  background-color: var(--pad-color-3);
+}
+
+/** class to make pad beat **/
+.beat {
+  animation: beating 0.3s alternate linear 2;
+}
+
+@keyframes beating {
+  from {
+    transform: scale(1);
+    box-shadow: 0 0 10px 1px rgba(0, 0, 0, 0.3);
+  }
+  to {
+    transform: scale(0.8);
+    box-shadow: 0 0 0px 0px rgba(0, 0, 0, 0);
+  }
+}

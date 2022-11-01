@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="beatmaker_custom.css" />
+    <title>Beat Maker Custom</title>
+  </head>
+  <body>
+    <div class="drum-panel">
+      <div class="kick-panel track-panel">
+        <div class="controls">
+          <h1>Kick</h1>
+          <select class="track-selector" name="kick-select" id="kick-select">
+            <option value="./sounds/kick-classic.wav">Kick Classic</option>
+            <option value="./sounds/kick-big.wav">Kick Big</option>
+            <option value="./sounds/kick-cultivator.wav">
+              Kick Cultivator
+            </option>
+          </select>
+          <button data-track="0" class="mute"><i class="fas fa-volume-mute"></i></button>
+        </div>
+        <div class="pad-panel">
+          <div class="b0 kick-pad pad"></div>
+          <div class="b1 kick-pad pad"></div>
+          <div class="b2 kick-pad pad"></div>
+          <div class="b3 kick-pad pad"></div>
+          <div class="b4 kick-pad pad"></div>
+          <div class="b5 kick-pad pad"></div>
+          <div class="b6 kick-pad pad"></div>
+          <div class="b7 kick-pad pad"></div>
+        </div>
+      </div>
+      <div class="snare-panel track-panel">
+        <div class="controls">
+          <h1>Snare</h1>
+          <select class="track-selector" name="snare-select" id="snare-select">
+            <option value="./sounds/snare-acoustic01.wav">Snare Classic</option>
+            <option value="sounds/snare-big.wav">Snare Big</option>
+            <option value="sounds/snare-sumo.wav">Snare Sumo</option>
+          </select>
+          <button data-track="1" class="mute"><i class="fas fa-volume-mute"></i></button>
+        </div>
+        <div class="pad-panel">
+          <div class="b0 snare-pad pad"></div>
+          <div class="b1 snare-pad pad"></div>
+          <div class="b2 snare-pad pad"></div>
+          <div class="b3 snare-pad pad"></div>
+          <div class="b4 snare-pad pad"></div>
+          <div class="b5 snare-pad pad"></div>
+          <div class="b6 snare-pad pad"></div>
+          <div class="b7 snare-pad pad"></div>
+        </div>
+      </div>
+      <div class="hihat-panel track-panel">
+        <div class="controls">
+          <h1>Hihat</h1>
+          <select class="track-selector" name="hihat-select" id="hihat-select">
+            <option value="sounds/hihat-acoustic01.wav">Hihat Classic</option>
+            <option value="sounds/hihat-electro.wav">Hihat Electro</option>
+            <option value="sounds/hihat-ring.wav">Hihat Ring</option>
+          </select>
+          <button data-track="2" class="mute"><i class="fas fa-volume-mute"></i></button>
+        </div>
+        <div class="pad-panel">
+          <div class="b0 hihat-pad pad"></div>
+          <div class="b1 hihat-pad pad"></div>
+          <div class="b2 hihat-pad pad"></div>
+          <div class="b3 hihat-pad pad"></div>
+          <div class="b4 hihat-pad pad"></div>
+          <div class="b5 hihat-pad pad"></div>
+          <div class="b6 hihat-pad pad"></div>
+          <div class="b7 hihat-pad pad"></div>
+        </div>
+      </div>
+      <div class="drum-controls">
+        <div class="tempo">
+          <input
+            class="tempo-slider"
+            type="range"
+            min="5"
+            max="300"
+            value="150"
+          />
+          <p class="tempo-value"><span>150</span> BPM</p>
+        </div>
+        <button class="play"><i class="fa-solid fa-play"></i></button>
+      </div>
+      <audio class="kick-audio" src="./sounds/kick-classic.wav"></audio>
+      <audio class="snare-audio" src="./sounds/snare-acoustic01.wav"></audio>
+      <audio class="hihat-audio" src="./sounds/hihat-acoustic01.wav"></audio>
+    </div>
+
+    <script
+      src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.0/js/all.min.js"
+      integrity="sha512-naukR7I+Nk6gp7p5TMA4ycgfxaZBJ7MO5iC3Fp6ySQyKFHOGfpkSZkYVWV5R7u7cfAicxanwYQ5D1e17EfJcMA=="
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+    ></script>
+    <script src="beatmaker_custom.js"></script>
+  </body>
+</html>
