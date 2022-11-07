@@ -1,0 +1,112 @@
+/** Making some imports **/
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@100&display=swap');
+
+/** creating global variables **/
+:root{
+    --main-font: "Poppins", sans-serif;
+    --primary-text-color: white;
+    --bg-color-1: #231111;
+    
+}
+
+*{ 
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body{
+    height: 100vh;
+    font-family: var(--main-font);
+    color: var(--primary-text-color);
+}
+
+i{
+    pointer-events: none;
+}
+
+.wrapper{
+    height: 100%;
+    background-image: url("images/listening_to_music.jpg");
+    background-size: cover;
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    justify-content: end;
+}
+
+/** panel styles **/
+.panel{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    height: 5rem;
+    backdrop-filter: blur(0.5rem);
+}
+
+.panel button{
+    border: none;
+    background-color: transparent;
+    color: var(--primary-text-color);
+    font-size: 2rem;
+    cursor: pointer;
+}
+
+
+/** controls styles **/
+.controls{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 4rem;
+}
+
+.controls button{
+    width: 3rem;
+    height: 3rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.controls .play-btn{
+    width: 4rem;
+    height: 4rem;
+    border: solid white 1.5px;
+    border-radius: 50%;
+}
+
+/** styles for track namem display **/
+.track-name-display{
+    background-color: var(--bg-color-1);
+    height: 100%;
+    padding: 1rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 0.9rem;
+}
+
+/** styles for more controls **/
+.more-controls{
+    padding: 0 2rem;
+    position: relative;
+}
+
+.more-controls .menu{
+    position: absolute;
+    top: 0;
+    left: 0;
+    border: solid white 1px;
+    transform: translate(-100%, -100%);
+    border-radius: 10px;
+    width: 200px;
+    background-color: var(--bg-color-1);
+    overflow: hidden;
+}
+
+.more-controls .menu .volume-control{
+    display: flex;
+    gap: 10px;
+    padding: 0.5rem 1rem;
+}

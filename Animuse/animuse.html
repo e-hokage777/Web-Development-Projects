@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.0/css/all.min.css"
+      integrity="sha512-xh6O/CkQoPOWDdYTDqeRdPCVd1SpvCA9XXcUnZS2FmJNp1coAFzvtCN9BmamE+4aHK8yyUHUSCcJHgXloTyT2A=="
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+    />
+    <link rel="stylesheet" href="animuse.css" />
+    <title>Animuse</title>
+  </head>
+  <body>
+    <div class="wrapper">
+      <div class="panel">
+        <div class="track-name-display">
+          <p>Track Name</p>
+        </div>
+        <div class="controls">
+          <button class="previous-btn">
+            <i class="fa-solid fa-backward-step"></i>
+          </button>
+          <button class="play-btn"><i class="fa-solid fa-play"></i></button>
+          <button class="next-btn">
+            <i class="fa-solid fa-forward-step"></i>
+          </button>
+        </div>
+        <div class="more-controls">
+          <button class="menu-toggle">
+            <i class="fa-solid fa-ellipsis-vertical"></i>
+          </button>
+          <div class="menu">
+            <div class="volume-control">
+                <i class="fa-solid fa-volume-high"></i>
+                <input type="range" name="volume-control" id="">
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- The Audio -->
+      <audio class="audio-track" src="tracks/Joakim Molitor feat Victoria Voss  Standing Still.mp3"></audio>
+    </div>
+    <script src="animuse.js"></script>
+  </body>
+</html>
