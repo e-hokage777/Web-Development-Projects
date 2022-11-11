@@ -190,6 +190,14 @@ const musicList = [
       TRACKS_URL +
       "Mike Williams & Felix Jaehn - Without You (Mesto Remix) feat. Jordan Shaw.mp3",
   },
+  {
+    name: "Free",
+    artist: "Rino Esposito x Adriano Pepe",
+    img_src: IMAGES_URL + "free.jpg",
+    track_src:
+      TRACKS_URL +
+      "Rino Esposito x Adriano Pepe  Free.mp3",
+  }
 ];
 
 // creating an instance of animuse player
