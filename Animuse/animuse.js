@@ -15,6 +15,7 @@ class AnimusePlayer {
     this.nextButton = this.controls.querySelector(".next-btn");
     this.previousButton = this.controls.querySelector(".previous-btn");
     this.moreControls = document.querySelector(".more-controls");
+    this.menuToggle = this.moreControls.querySelector(".menu-toggle");
     this.audioTrack = document.querySelector(".audio-track");
 
     // creating necessary variables
@@ -82,6 +83,10 @@ class AnimusePlayer {
     this.previousButton.addEventListener("click", (event) => {
       this.previousTrack();
     });
+
+    this.menuToggle.addEventListener("click", (event) => {
+      this.toggleMoreControlsMenu();
+    })
   }
 
   // function to start playing audio
@@ -136,6 +141,11 @@ class AnimusePlayer {
     if(this.isTrackPlaying){
       this.audioTrack.play();
     }
+  }
+
+  // function to toggle more controls menu
+  toggleMoreControlsMenu(){
+    this.moreControls.classList.toggle("active");
   }
 
   // function to vary bar heights
