@@ -24,6 +24,7 @@ class AnimusePlayer {
 
     // creating necessary variables
     this.isTrackPlaying = false;
+    this.isSeeking = false;
 
     // creating audio graph
     this.audioContext = new AudioContext();
@@ -96,6 +97,10 @@ class AnimusePlayer {
       this.seek();
     });
 
+    this.audioSeeker.addEventListener("input", (event) => {
+      this.isSeeking = true;
+    });
+
     this.volumeSlider.addEventListener("input", (event) => {
       this.audioTrack.volume = this.volumeSlider.value;
     });
@@ -105,7 +110,9 @@ class AnimusePlayer {
     });
 
     this.audioTrack.addEventListener("timeupdate", (event) => {
-      this.updateSeeker();
+      if (!this.isSeeking) {
+        this.updateSeeker();
+      }
     });
 
     this.audioTrack.addEventListener("ended", (event) => {
@@ -148,6 +155,7 @@ class AnimusePlayer {
   // function to seek
   seek() {
     this.audioTrack.currentTime = this.audioSeeker.value;
+    this.isSeeking = false;
   }
 
   // function to start playing audio
