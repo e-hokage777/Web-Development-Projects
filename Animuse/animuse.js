@@ -16,6 +16,10 @@ class AnimusePlayer {
     this.previousButton = this.controls.querySelector(".previous-btn");
     this.moreControls = document.querySelector(".more-controls");
     this.menuToggle = this.moreControls.querySelector(".menu-toggle");
+    this.volumeSlider = this.moreControls.querySelector(".volume-slider");
+    this.audioSeeker = document.querySelector(".audio-seek");
+    this.trackTimeElapsed = document.querySelector(".track-time-elapsed");
+    this.trackTimeRemaining = document.querySelector(".track-time-remaining");
     this.audioTrack = document.querySelector(".audio-track");
 
     // creating necessary variables
@@ -86,7 +90,64 @@ class AnimusePlayer {
 
     this.menuToggle.addEventListener("click", (event) => {
       this.toggleMoreControlsMenu();
-    })
+    });
+
+    this.audioSeeker.addEventListener("change", (event) => {
+      this.seek();
+    });
+
+    this.volumeSlider.addEventListener("input", (event) => {
+      this.audioTrack.volume = this.volumeSlider.value;
+    });
+
+    this.audioTrack.addEventListener("loadedmetadata", (event) => {
+      this.setTrackTime();
+    });
+
+    this.audioTrack.addEventListener("timeupdate", (event) => {
+      this.updateSeeker();
+    });
+
+    this.audioTrack.addEventListener("ended", (event) => {
+      this.nextTrack();
+    });
+  }
+
+  // utility functions ************************
+  // function to format audio time
+  formatTime(time) {
+    let mins = Math.floor(time / 60);
+    let secs = Math.round(time % 60);
+
+    return `${mins} : ${secs.toString().padStart(2, "0")}`;
+  }
+
+  // function to set track time up
+  setTrackTime() {
+    let audioDuration = this.audioTrack.duration;
+    this.trackTimeRemaining.innerText = this.formatTime(audioDuration);
+
+    this.audioSeeker.max = audioDuration; // setting the max range of audio seeker
+  }
+
+  // function to update seeker value
+  updateSeeker() {
+    this.audioSeeker.value = Math.floor(this.audioTrack.currentTime); // updating the slider value
+
+    // changing time elapsed
+    this.trackTimeElapsed.innerText = this.formatTime(
+      this.audioTrack.currentTime
+    );
+
+    // changing time remaining
+    this.trackTimeRemaining.innerText = this.formatTime(
+      this.audioTrack.duration - this.audioTrack.currentTime
+    );
+  }
+
+  // function to seek
+  seek() {
+    this.audioTrack.currentTime = this.audioSeeker.value;
   }
 
   // function to start playing audio
@@ -110,7 +171,7 @@ class AnimusePlayer {
   // function to play next track
   nextTrack() {
     this.currentTrackIndex =
-      (this.currentTrackIndex + 1) % (this.musicList.length);
+      (this.currentTrackIndex + 1) % this.musicList.length;
     this.currentTrack = this.musicList[this.currentTrackIndex];
     this.audioTrack.currentTime = 0;
     this.audioTrack.src = this.currentTrack.track_src;
@@ -118,17 +179,16 @@ class AnimusePlayer {
     this.trackDisplay.querySelector("p").innerHTML =
       this.currentTrack.name + " - " + this.currentTrack.artist;
 
-    if(this.isTrackPlaying){
+    if (this.isTrackPlaying) {
       this.audioTrack.play();
     }
   }
 
   // function to play previous track
   previousTrack() {
-    if(this.currentTrackIndex === 0){
+    if (this.currentTrackIndex === 0) {
       this.currentTrackIndex = this.musicList.length - 1;
-    }
-    else{
+    } else {
       this.currentTrackIndex--;
     }
     this.currentTrack = this.musicList[this.currentTrackIndex];
@@ -138,13 +198,13 @@ class AnimusePlayer {
     this.trackDisplay.querySelector("p").innerHTML =
       this.currentTrack.name + " - " + this.currentTrack.artist;
 
-    if(this.isTrackPlaying){
+    if (this.isTrackPlaying) {
       this.audioTrack.play();
     }
   }
 
   // function to toggle more controls menu
-  toggleMoreControlsMenu(){
+  toggleMoreControlsMenu() {
     this.moreControls.classList.toggle("active");
   }
 
@@ -156,7 +216,8 @@ class AnimusePlayer {
     for (let i = 0; i < this.bufferLength; i++) {
       let currValue = this.visualizerDataArray[i];
       currValue = this.processValue(currValue);
-      this.bars[i].style.transform = `scaleY(${currValue * factor + 1})`;
+      let scale = this.processValue(currValue * factor + 1);
+      this.bars[i].style.transform = `scaleY(${scale})`;
     }
     if (this.isTrackPlaying) {
       requestAnimationFrame(this.visualize);
@@ -167,6 +228,9 @@ class AnimusePlayer {
   processValue(val) {
     if (val === 0) {
       return Math.ceil(Math.random() * 20);
+    }
+    if (val === Infinity) {
+      return 1;
     }
     return val;
   }
@@ -204,11 +268,11 @@ const musicList = [
     name: "Free",
     artist: "Rino Esposito x Adriano Pepe",
     img_src: IMAGES_URL + "free.jpg",
-    track_src:
-      TRACKS_URL +
-      "Rino Esposito x Adriano Pepe  Free.mp3",
-  }
+    track_src: TRACKS_URL + "Rino Esposito x Adriano Pepe  Free.mp3",
+  },
 ];
 
-// creating an instance of animuse player
-const animusePlayer = new AnimusePlayer(musicList);
+window.onload = function () {
+  // creating an instance of animuse player
+  const animusePlayer = new AnimusePlayer(musicList);
+};

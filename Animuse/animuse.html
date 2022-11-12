@@ -18,6 +18,11 @@
     <div class="wrapper">
       <div class="visualizer"></div>
       <div class="panel">
+        <div class="audio-seek-container">
+          <p class="time-display track-time-elapsed">0:00</p>
+          <input class="audio-seek" type="range" min="0" max="200" value="0">
+          <p class="time-display track-time-remaining">3:00</p>
+        </div>
         <div class="track-name-display">
           <p>Track Name</p>
         </div>
@@ -37,7 +42,7 @@
           <div class="menu">
             <div class="volume-control">
                 <i class="fa-solid fa-volume-high"></i>
-                <input type="range" name="volume-control" id="">
+                <input class="volume-slider" type="range" name="volume-slider" min="0", max="1", step="0.05">
             </div>
           </div>
         </div>
