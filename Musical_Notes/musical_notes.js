@@ -63,6 +63,11 @@ class Book {
     }, this.timeBeforeFlip);
   }
 
+  stopTrack(){
+    this.audioTrack.pause();
+    this.audioCtx.close().then(() => {console.log("track ended")})
+  }
+
   flip() {
     this.page_cover_list[this.currentPageIndex].classList.add("flipped");
 
@@ -77,6 +82,9 @@ class Book {
     // checking whether to clear the interval
     if (this.currentPageIndex === this.page_cover_count) {
       this.rampVolumeDown();
+      setTimeout(() => {
+        this.stopTrack();
+      }, 8000);
       clearInterval(this.flipInverval);
     }
   }
