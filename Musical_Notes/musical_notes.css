@@ -106,6 +106,38 @@ body{
     flex-direction: column;
     justify-content: space-evenly;
     align-items: center;
+    padding: 0rem 1rem;
+    text-align: center;
+}
+
+.page .front .title, .page .front .footer{
+    transition: all var(--flip-time);
+}
+
+.page .front .title{
+    transform: translateY(-3rem);
+    opacity: 0;
+}
+
+.page .front .footer{
+    transform: translateY(3rem);
+    opacity: 0;
+    transition-delay: 4s;
+}
+
+.page.next .front .title, .page.next .front .footer{
+    transform: translateY(0);
+    opacity: 1;
+}
+
+.page .content{
+    opacity: 0;
+    transition: all var(--flip-time);
+    transition-delay: 1.5s;
+}
+
+.page.next .content{
+    opacity: 1;
 }
 
 .page .back{
