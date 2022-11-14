@@ -103,10 +103,10 @@ class Book {
   }
 
   // function for creating bubbles
-  spawnBubbles(){
+  spawnBubbles() {
     this.bubbleInterval = setInterval(() => {
       this.bubbleGenerator.makeBubble();
-    }, 500)
+    }, 500);
   }
 }
 
@@ -120,23 +120,26 @@ class BubbleGenerator {
   }
 
   makeBubble() {
-    let bubbleRadius = Math.floor((Math.random() * this.maxBubbleRadius) + this.minBubbleRadius);
+    let bubbleRadius = Math.floor(
+      Math.random() * this.maxBubbleRadius + this.minBubbleRadius
+    );
     let bubble = new Bubble(bubbleRadius);
     let bubbleElement = bubble.getBubbleElement();
     bubbleElement.style.bottom = `${-2 * bubbleRadius}px`;
-    bubbleElement.style.left = `${Math.floor(Math.random() * this.viewportWidth + bubbleRadius)}px`;
+    bubbleElement.style.left = `${Math.floor(
+      Math.random() * this.viewportWidth + bubbleRadius
+    )}px`;
 
     // adding the animation class to the bubble element
     bubbleElement.classList.add("bubble-float");
 
     // adding an event listener for when the animation ends
-    bubbleElement.addEventListener("animationend", function(){
+    bubbleElement.addEventListener("animationend", function () {
       this.remove();
-    })
+    });
 
     // adding the bubble element to the document body
     document.body.appendChild(bubbleElement);
-
   }
 }
 
@@ -154,9 +157,11 @@ class Bubble {
     `;
   }
 
-  getBubbleElement(){
+  getBubbleElement() {
     return this.bubbleElement;
   }
 }
 
-let book = new Book();
+window.onload = function () {
+  let book = new Book();
+};
