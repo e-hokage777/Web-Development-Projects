@@ -10,7 +10,8 @@
     --primary-font-family: "Roboto", sans-serif; 
     --flip-time: 1s;
     --book-width: 300px;
-    --book-height: 400px
+    --book-height: 400px;
+    --bubble-float-time: 10s;
 }
 
 *{
@@ -36,6 +37,7 @@ body{
     width: var(--book-width);
     height: var(--book-height);
     perspective: 1500px;
+    z-index: 10;
 }
 
 /** cover and page styles **/
@@ -159,4 +161,16 @@ body{
 
 .flipped{
     transform: rotateY(-180deg);
+}
+
+
+/** bubble styles **/
+.bubble-float{
+    animation: float var(--bubble-float-time) ease-in-out;
+}
+
+@keyframes float{
+    to {
+        bottom: 110%;
+    }
 }
