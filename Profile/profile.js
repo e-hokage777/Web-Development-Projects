@@ -2,9 +2,26 @@
 class App {
   constructor() {
     // SELECTORS
+    this.buttonHoverAudio = document.getElementById("button-hover-audio");
+    this.contentMenuItems = document.querySelectorAll(
+      "#content-menu .content-menu-item"
+    );
 
     // creating necessary variablels
     this.bubbleGenerator = new BubbleGenerator();
+
+    // audio variables
+    this.audioCtx = new AudioContext();
+    this.primaryGain = this.audioCtx.createGain();
+    this.buttonHoverSoundGain = this.audioCtx.createGain();
+    this.buttonHoverSoundSource = this.audioCtx.createMediaElementSource(
+      this.buttonHoverAudio
+    );
+
+    // making connections
+    this.buttonHoverSoundSource.connect(this.buttonHoverSoundGain);
+    this.buttonHoverSoundGain.connect(this.primaryGain);
+    this.primaryGain.connect(this.audioCtx.destination);
 
     // call function to intialize components
     this.init();
@@ -12,14 +29,32 @@ class App {
 
   // function to initialize components
   init() {
+    // EVENT LISTENRERS
+    this.contentMenuItems.forEach((contentMenuItem, index) => {
+      contentMenuItem.addEventListener("mouseover", (event) => {
+        this.playButtonHoverSound();
+      });
+    });
+
     //spawning bubbles
     this.spawnBubbles();
+
+    // increasing playback speed of audio element to take care of speakers making glitchy sounds
+    this.buttonHoverAudio.playbackRate = 7;
   }
 
+  // button to spawn bubbles
   spawnBubbles() {
     this.bubbleInterval = setInterval(() => {
       this.bubbleGenerator.makeBubble();
     }, 500);
+  }
+
+  // function to play button hover sound
+  playButtonHoverSound() {
+    this.audioCtx.resume();
+    this.buttonHoverAudio.currentTime = 0;
+    this.buttonHoverAudio.play();
   }
 }
 
