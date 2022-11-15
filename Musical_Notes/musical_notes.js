@@ -14,6 +14,7 @@ class Book {
     this.timeBeforeFlip = 5000;
     this.flipInverval = null;
     this.bubbleInterval = null;
+    this.hasStarted = false;
 
     // creating audio stuff
     this.audioCtx = new AudioContext();
@@ -53,8 +54,11 @@ class Book {
 
     // EVENT LISTENERS
     this.playButton.addEventListener("click", (event) => {
-      this.start();
-      this.spawnBubbles();
+      if(!this.hasStarted){
+        this.start();
+        this.spawnBubbles();
+        this.hasStarted = true;
+      }
     });
   }
 
