@@ -9,6 +9,7 @@
   --primary-font-color: black;
   --primary-button-color: rgb(41, 185, 221);
   --button-hover-color: rgb(145, 210, 226);
+  --card-title-color: #157D81;
 }
 
 * {
@@ -96,7 +97,7 @@ main {
 /** cards up **/
 .card-holder {
   width: 100%;
-  height: 100vh;
+  min-height: 100vh;
   padding: 4rem;
   display: flex;
   justify-content: center;
@@ -110,6 +111,9 @@ main {
   background-color: transparent;
   backdrop-filter: blur(0.5rem);
   box-shadow: 0 3px 5px 2px rgba(0, 0, 0, 0.3);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 }
 
 /** styling for individual sections **/
@@ -180,6 +184,48 @@ main {
     transform: translateY(0.5rem);
     box-shadow: none;
 }
+
+/** styles for all other cards **/
+.c_card .card-title{
+  color: var(--card-title-color);
+  padding-top: 4rem;
+}
+
+.c_card .card-content{
+  padding: 0rem 2rem;
+  margin: 2rem;
+  border-radius: 20px;
+  border: solid 2px var(--card-title-color);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  align-self: stretch;
+  flex: 1;
+}
+
+/** styles for skills section **/
+#skills .c_card .card-content{
+  display: block;
+}
+
+#skills .skill-set{
+  padding: 2rem;
+  flex-grow: 1;
+}
+
+#skills .skill-set .skill-set-title{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-bottom: 2rem;
+  gap: 1rem;
+}
+
+#skills .skill-set .skill-set-title i{
+  font-size: 4rem;
+  color: var(--card-title-color);
+}
+
 
 /** media queries **/
 @media (max-width: 576px){
