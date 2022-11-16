@@ -41,6 +41,8 @@ class App {
 
     // increasing playback speed of audio element to take care of speakers making glitchy sounds
     this.buttonHoverAudio.playbackRate = 7;
+
+
   }
 
   // button to spawn bubbles
@@ -56,6 +58,7 @@ class App {
     this.buttonHoverAudio.currentTime = 0;
     this.buttonHoverAudio.play();
   }
+
 }
 
 // creating bubble generator
