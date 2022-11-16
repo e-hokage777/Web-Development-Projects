@@ -85,6 +85,10 @@ body{
     border-bottom: solid 25px transparent;
 }
 
+.play-button:active{
+    background-color: rgb(241, 241, 114);
+}
+
 /** page styles **/
 .page{
     background-color: var(--page-color);

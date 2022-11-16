@@ -116,7 +116,7 @@ class Book {
 
 // creating bubble generator
 class BubbleGenerator {
-  constructor(minRadius = 20, maxRadius = 50) {
+  constructor(minRadius = 10, maxRadius = 30) {
     this.viewportWidth = document.querySelector(":root").clientWidth;
     this.viewportHeight = document.querySelector(":root").clientHeight;
     this.maxBubbleRadius = minRadius;
