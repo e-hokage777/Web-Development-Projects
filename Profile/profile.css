@@ -10,6 +10,7 @@
   --primary-button-color: rgb(41, 185, 221);
   --button-hover-color: rgb(145, 210, 226);
   --card-title-color: #157D81;
+  --secondary-link-color: rgb(255, 245, 103);
 }
 
 * {
@@ -106,7 +107,7 @@ main {
 
 .c_card {
   width: 100%;
-  height: 100%;
+  min-height: 100%;
   border-radius: 10px;
   background-color: transparent;
   backdrop-filter: blur(0.5rem);
@@ -224,6 +225,33 @@ main {
 #skills .skill-set .skill-set-title i{
   font-size: 4rem;
   color: var(--card-title-color);
+}
+
+/** styles for certificates section **/
+#certificates .c_card .card-content{
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 20px;
+  position: relative;
+  overflow: hidden;
+  padding: 4rem 2rem;
+  padding-bottom: 5rem;
+}
+
+
+#certificates .all-certs-link{
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+  color: white;
+  background-color: var(--card-title-color);
+  text-align: center;
+  padding: 1rem 0rem;
+}
+
+#certificates .all-certs-link a{
+  color: var(--secondary-link-color);
 }
 
 
