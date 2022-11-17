@@ -254,6 +254,79 @@ main {
   color: var(--secondary-link-color);
 }
 
+/** styling for projects section **/
+#projects .project-card{
+  padding: 2rem;
+  cursor: pointer;
+}
+#projects .project-card-inner{
+  /* width: 200px; */
+  height: 200px;
+  background-color:var(--card-title-color);
+  color: white;
+  position: relative;
+  border-radius: 5px;
+  overflow: hidden;
+}
+
+#projects .project-card-inner .project-image{
+  height: 70%;
+}
+
+#projects .project-card-inner img{
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+#projects .project-card-inner .project-title{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 30%;
+}
+
+#projects .project-card-inner .project-more-info{
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0,0,0,0.7);
+  padding: 0.5rem;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  justify-content: center;
+  align-items: center;
+  opacity: 0;
+  transition: all 0.5s;
+  text-align: center;
+  pointer-events: none;
+}
+
+#projects .project-card-inner:hover .project-more-info{
+  opacity: 1;
+  pointer-events: all;
+}
+
+#projects .project-card.expand{
+  position: fixed;
+  width: 100%;
+  height: 100%;
+  top: 0;
+  left: 0;
+  background-color: rgba(0,0,0,0.5);
+  transition: all 0.5s;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+#projects .project-card.expand .project-card-inner{
+  width: 70%;
+  height: 70%;
+}
 
 /** media queries **/
 @media (max-width: 576px){

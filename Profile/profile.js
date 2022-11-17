@@ -6,6 +6,7 @@ class App {
     this.contentMenuItems = document.querySelectorAll(
       "#content-menu .content-menu-item"
     );
+    this.projectCards = document.querySelectorAll("#projects .project-card");
 
     // creating necessary variablels
     this.bubbleGenerator = new BubbleGenerator();
@@ -36,6 +37,17 @@ class App {
       });
     });
 
+    // this.projectCards.forEach((projectCard) => {
+    //   projectCard.addEventListener("click", (event) => {
+    //     if(!event.target.classList.contains("project-card")){
+    //       this.expandProjectCard(projectCard);
+    //     }
+    //     else{
+    //       this.collapseProjectCard(projectCard);
+    //     }
+    //   });
+    // });
+
     //spawning bubbles
     this.spawnBubbles();
 
@@ -57,6 +69,16 @@ class App {
     this.audioCtx.resume();
     this.buttonHoverAudio.currentTime = 0;
     this.buttonHoverAudio.play();
+  }
+
+  // function to expand project card
+  expandProjectCard(projectCard){
+    projectCard.classList.add("expand");
+  }
+
+  // function to compress project card
+  collapseProjectCard(projectCard){
+    projectCard.classList.remove("expand");
   }
 
 }
