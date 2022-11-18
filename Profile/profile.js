@@ -68,7 +68,7 @@ class App {
   playButtonHoverSound() {
     this.audioCtx.resume();
     this.buttonHoverAudio.currentTime = 0;
-    this.buttonHoverAudio.play();
+    this.buttonHoverAudio.play().catch((error) => {return});
   }
 
   // function to expand project card
