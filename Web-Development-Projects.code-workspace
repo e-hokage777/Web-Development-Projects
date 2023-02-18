@@ -8,6 +8,7 @@
 		}
 	],
 	"settings": {
-		"liveServer.settings.multiRootWorkspaceName": "Web-Development-Projects"
+		"liveServer.settings.multiRootWorkspaceName": "Web-Development-Projects",
+		"liveServer.settings.port": 5502
 	}
 }
