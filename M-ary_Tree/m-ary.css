@@ -1,0 +1,39 @@
+*{
+    margin: 0;
+    padding: 0;
+}
+
+
+body{
+    height: 100vh;
+}
+
+#m-ary_container{
+    width: 100%;
+    height: 100%;
+    position: relative;
+}
+
+#m-ary_container #canvas{
+    position: absolute;
+    top: 0;
+    left: 0;
+    background-color: black;
+}
+
+#m-ary_container #controls{
+    position: absolute;
+    z-index: 5;
+    right: 0;
+    top: 0;
+    background-color: white;
+    display: flex;
+    flex-direction: column;
+    align-items: end;
+    opacity: 0.5;
+}
+
+#m-ary_container #controls #draw-btn{
+    display: block;
+    margin: auto;
+}
