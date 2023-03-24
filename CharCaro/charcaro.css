@@ -1,0 +1,79 @@
+:root{
+    --spinner-rot: 80deg;
+    --spinner-itembox-rot: calc(-1 * var(--spinner-rot) - (90deg - var(--spinner-rot)));
+}
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body{
+    height: 100vh;
+}
+
+.wrapper{
+    width: 100%;
+    height: 100%;
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    perspective: 500px;
+    background-color: black;
+}
+
+.spinner{
+    width: 300px;
+    height: 300px;
+    transform: rotateX(var(--spinner-rot)) rotateZ(90deg);
+    transition: all 2s;
+    position: relative;
+    transform-style: preserve-3d;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 50%;
+
+
+}
+
+/* .spinner:hover{
+    transform: rotateX(var(--spinner-rot)) rotateZ(180deg);
+} */
+
+.spinner-itembox{
+    width: 100px;
+    height: 100px;
+    /* background-color: red; */
+    rotate: x var(--spinner-itembox-rot);
+    transform: rotateY(90deg);
+    flex: 0 0 auto;
+    position: absolute;
+
+
+}
+
+.spinner-item{
+    width: 100%;
+    height: 100%;
+}
+
+.spinner-item img{
+    object-fit: cover;
+    width: 100%;
+    /* height: 100%; */
+    filter: drop-shadow(0px 0px 13px white);
+}
+
+.rotate-btn{
+    position: absolute;
+}
+
+.btn-left{
+    left: 15%;
+}
+.btn-right{
+    right: 15%;
+}
+
