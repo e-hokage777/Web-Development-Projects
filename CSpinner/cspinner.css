@@ -1,0 +1,26 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body{
+    height: 100vh;
+}
+
+.spinner-disc{
+    /* background-color: white; */
+}
+
+.spinner-item:nth-child(1){
+    background-color: blue;
+}
+.spinner-item:nth-child(2){
+    background-color: red;
+}
+.spinner-item:nth-child(3){
+    background-color: green;
+}
+.spinner-item:nth-child(4){
+    background-color: rgb(128, 0, 96);
+}

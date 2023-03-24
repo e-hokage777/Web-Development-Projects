@@ -1,0 +1,1 @@
+const charSpinner = new CSpinner("char-spinner", {});
