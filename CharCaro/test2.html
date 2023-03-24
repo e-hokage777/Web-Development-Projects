@@ -1,0 +1,192 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Testing</title>
+    <style>
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
+
+      body {
+        height: 100vh;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        perspective: 1000px;
+        background-color: black;
+      }
+
+      img {
+        /* object-fit: cover; */
+        width: 100%;
+        height: 100%;
+      }
+
+      .box {
+        width: 800px;
+        height: 800px;
+        /* background-color: rgb(104, 104, 139); */
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        rotate: x 90deg;
+        position: relative;
+        /* transform: rotateZ(90deg); */
+        transform-style: preserve-3d;
+        transition: all 2s;
+      }
+
+      /* .box:hover {
+        transform: rotateZ(120deg);
+      } */
+
+      .ball {
+        width: 150px;
+        height: 200px;
+        /* border-radius: 50%; */
+        /* background-color: aquamarine; */
+        position: absolute;
+        rotate: x -90deg;
+        transition: all 2s;
+        /* filter: drop-shadow(0px 5px 3px rgba(0,0,0,0.5)); */
+      }
+
+      .ball img {
+        transition: all 2s;
+      }
+
+      .ball.active img {
+        filter: drop-shadow(0px -3px 10px rgba(35, 207, 212, 0.8));
+      }
+
+      /* .box:hover .ball {
+        transform: rotateY(120deg);
+      } */
+
+      .ball:nth-child(1) {
+        /* background-color: rgb(231, 12, 12); */
+      }
+      .ball:nth-child(2) {
+        /* background-color: rgb(76, 158, 76); */
+      }
+      .ball:nth-child(3) {
+        /* background-color: rgb(163, 119, 52); */
+      }
+
+      button {
+        position: absolute;
+        font-size: 4rem;
+        color: blueviolet;
+        background-color: transparent;
+        border: none;
+        cursor: pointer;
+      }
+      button.btn-left {
+        left: 10%;
+      }
+      button.btn-right {
+        right: 10%;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="box">
+      <div class="ball">
+        <img src="./imgs/luffy.png" alt="" />
+      </div>
+      <div class="ball">
+        <img src="./imgs/luffy2.png" alt="" />
+      </div>
+      <div class="ball">
+        <img src="./imgs/luffy3.png" alt="" />
+      </div>
+      <!-- <div class="ball"></div> -->
+      <!-- <div class="ball"></div>
+      <div class="ball"></div>
+      <div class="ball"></div> -->
+    </div>
+    <button class="btn-left">&lt;</button>
+    <button class="btn-right">&gt;</button>
+    <script src="./utils/math.js"></script>
+    <script>
+      //   const ball = document.querySelector(".ball");
+      const balls = document.querySelectorAll(".ball");
+      const leftBtn = document.querySelector(".btn-left");
+      const rightBtn = document.querySelector(".btn-right");
+      const spinner = document.querySelector(".box");
+      let radius = 800 / 2;
+      let degreeAngle = 360 / balls.length;
+      let inc = 0;
+      let ang = 0;
+      let increase = 2;
+      let totAngle = 0;
+      let curItemIndex = 0;
+
+      // setting up the various balls
+      for (let i = 0; i < balls.length; i++) {
+        let angle = ((degreeAngle * i + -270) / 360) * (2 * Math.PI);
+        let [xpos, ypos] = math.unitCirclePos(angle);
+        balls[i].style.translate = `${radius * xpos}px ${radius * ypos}px`;
+      }
+
+      // making the first item have class active
+      balls[curItemIndex].classList.add("active");
+
+      //   function animate(time) {
+      //     for (let i = 0; i < balls.length; i++) {
+      //       let cangle = degreeAngle * i + inc;
+      //       let angle = (cangle / 360) * (2 * Math.PI);
+      //       let [xpos, ypos] = math.unitCirclePos(angle);
+      //       balls[i].style.translate = `${radius * xpos}px ${radius * ypos}px`;
+
+      //       if ((i == 0)) {
+      //         console.log(cangle);
+      //       }
+      //     }
+
+      //     inc += increase;
+      //     ang -= increase;
+
+      //     if (ang <= 0 || ang / 2 > degreeAngle) {
+      //       return;
+      //     } else {
+      //       requestAnimationFrame(animate);
+      //     }
+      //   }
+
+      leftBtn.addEventListener("click", (event) => {
+        // removing active class from previous element
+        balls[curItemIndex].classList.remove("active");
+        totAngle += degreeAngle;
+        //rotating ball and spinner
+        spinner.style.transform = `rotateZ(${totAngle}deg)`;
+        for (let ball of balls) {
+          ball.style.transform = `rotateY(${totAngle}deg)`;
+        }
+
+        curItemIndex = Math.abs(totAngle / degreeAngle) % balls.length;
+        balls[curItemIndex].classList.add("active");
+      });
+
+      rightBtn.addEventListener("click", (event) => {
+        balls[curItemIndex].classList.remove("active");
+        totAngle -= degreeAngle;
+        //rotating ball and spinner
+        spinner.style.transform = `rotateZ(${totAngle}deg)`;
+        for (let ball of balls) {
+          ball.style.transform = `rotateY(${totAngle}deg)`;
+        }
+
+        curItemIndex = Math.abs(totAngle / degreeAngle) % balls.length;
+        balls[curItemIndex].classList.add("active");
+      });
+
+      // requestAnimationFrame(animate);
+    </script>
+  </body>
+</html>
