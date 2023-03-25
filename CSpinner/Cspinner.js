@@ -13,6 +13,8 @@ class CSpinner {
       spinnerItem = {
         width: 100, // the width of a single item on the spinner
         height: 100, // the height of a single item on the spinner
+        titleColor: "white", // color of spinner item title if any
+        titleFontSize: 20 // font size of the title
       },
       button = {
         size: 40,
@@ -27,6 +29,8 @@ class CSpinner {
     this.spinnerDiscRadius = this.spinnerDiscSize / 2;
     this.spinnerItemWidth = spinnerItem.width;
     this.spinnerItemHeight = spinnerItem.height;
+    this.spinnerItemTitleColor  = spinnerItem.titleColor ? this.spinnerItemTitleColor:"white";
+    this.spinnerItemTitleFontSize  = spinnerItem.titleFontSize ? spinnerItem.titleFontSize:20;
     this.spinnerBtnSize = button.size;
 
     // setting up the spinner element
@@ -96,28 +100,47 @@ class CSpinner {
         width: 100%;
         height: 100%;
         `;
+
+      // adding styles to item title
+      let spinnerItemTitle = spinnerItem.querySelector(".spinneritem-title");
+      if (spinnerItemTitle) {
+        spinnerItemTitle.style = `
+        text-align: center;
+        position: absolute;
+        width: 100%;
+        left: 0;
+        top: 0;
+        transform: translate(0, -110%);
+        color: ${this.spinnerItemTitleColor};
+        font-size: ${this.spinnerItemTitleFontSize}px;
+        `;
+      }
     });
 
     // setting up styles of buttons
     this.leftBtn.style = `
     color: white;
     position: absolute;
-    left: 20%;
+    left: 0;
     border: none;
     background-color: transparent;
     font-weight: bold;
-    font-size: ${this.spinnerBtnSize}px;
     cursor: pointer;
+    height: 100%;
+    padding: 0rem 2rem;
+    font-size: ${this.spinnerBtnSize}px;
     `;
     this.rightBtn.style = `
     color: white;
     position: absolute;
-    right: 20%;
+    right: 0;
     border: none;
     background-color: transparent;
     font-weight: bold;
-    font-size: ${this.spinnerBtnSize}px;
     cursor: pointer;
+    height: 100%;
+    padding: 0rem 2rem;
+    font-size: ${this.spinnerBtnSize}px;
     `;
   }
 
@@ -145,10 +168,10 @@ class CSpinner {
 
       this.curItemIndex =
         (this.spinnerItems.length -
-          (Math.abs(this.totalAngleIncrease / this.itemInterAngle) %
+          ((this.totalAngleIncrease / this.itemInterAngle) %
             this.spinnerItems.length)) %
         this.spinnerItems.length;
-      console.log(this.curItemIndex);
+      console.log("left ", this.curItemIndex);
       this.spinnerItems[this.curItemIndex].classList.add("active");
     });
 
@@ -162,10 +185,9 @@ class CSpinner {
         spinnerItem.style.transform = `rotateY(${this.totalAngleIncrease}deg)`;
       }
 
-      this.curItemIndex =
-        Math.abs(this.totalAngleIncrease / this.itemInterAngle) %
-        this.spinnerItems.length;
-      console.log(this.curItemIndex);
+      // this.curItemIndex = Math.abs(this.totalAngleIncrease / this.itemInterAngle) % this.spinnerItems.length;
+      this.curItemIndex = (this.curItemIndex + 1) % this.spinnerItems.length;
+      console.log("right ", this.curItemIndex);
       this.spinnerItems[this.curItemIndex].classList.add("active");
     });
   }
