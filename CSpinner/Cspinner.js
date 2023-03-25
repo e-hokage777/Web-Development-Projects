@@ -8,7 +8,7 @@ class CSpinner {
       },
       spinnerDisc = {
         size: 300, // the radius of the spinner
-        slant: 70, // the degree of slope of the spinner
+        slant: 90, // the degree of slope of the spinner
       },
       spinnerItem = {
         width: 100, // the width of a single item on the spinner
@@ -39,6 +39,7 @@ class CSpinner {
     // GLOBAL VARIABLES
     this.itemInterAngle = 360 / this.spinnerItems.length;
     this.totalAngleIncrease = 0;
+    this.curItemIndex = 0;
 
     // setting up spinner styles
     this.#setSpinnerStyles();
@@ -48,6 +49,9 @@ class CSpinner {
 
     // adding event listeners
     this.#addEventListeners();
+
+    // giving the current active item the `active` class
+    this.spinnerItems[this.curItemIndex].classList.add("active");
   }
 
   #setSpinnerStyles() {
@@ -84,6 +88,13 @@ class CSpinner {
         position: absolute;
         rotate: x ${-90}deg;
         transition: all ${this.spinnerTransTime}s;
+        `;
+
+      // adding styles to the spinner item images
+      spinnerItem.querySelector(".spinneritem-img").style = `
+        object-fit: contain;
+        width: 100%;
+        height: 100%;
         `;
     });
 
@@ -123,21 +134,39 @@ class CSpinner {
   // to add event listeners
   #addEventListeners() {
     this.leftBtn.addEventListener("click", (event) => {
-      this.totalAngleIncrease += this.itemInterAngle;
+      // removing the active class
+      this.spinnerItems[this.curItemIndex].classList.remove("active");
 
+      this.totalAngleIncrease += this.itemInterAngle;
       this.spinnerDisc.style.transform = `rotateZ(${this.totalAngleIncrease}deg)`;
       for (let spinnerItem of this.spinnerItems) {
         spinnerItem.style.transform = `rotateY(${this.totalAngleIncrease}deg)`;
       }
+
+      this.curItemIndex =
+        (this.spinnerItems.length -
+          (Math.abs(this.totalAngleIncrease / this.itemInterAngle) %
+            this.spinnerItems.length)) %
+        this.spinnerItems.length;
+      console.log(this.curItemIndex);
+      this.spinnerItems[this.curItemIndex].classList.add("active");
     });
 
     this.rightBtn.addEventListener("click", (event) => {
-      this.totalAngleIncrease -= this.itemInterAngle;
+      // removing the active class
+      this.spinnerItems[this.curItemIndex].classList.remove("active");
 
+      this.totalAngleIncrease -= this.itemInterAngle;
       this.spinnerDisc.style.transform = `rotateZ(${this.totalAngleIncrease}deg)`;
       for (let spinnerItem of this.spinnerItems) {
         spinnerItem.style.transform = `rotateY(${this.totalAngleIncrease}deg)`;
       }
+
+      this.curItemIndex =
+        Math.abs(this.totalAngleIncrease / this.itemInterAngle) %
+        this.spinnerItems.length;
+      console.log(this.curItemIndex);
+      this.spinnerItems[this.curItemIndex].classList.add("active");
     });
   }
 

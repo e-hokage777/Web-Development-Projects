@@ -1,18 +1,22 @@
-*{
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
 }
 
-body{
-    height: 100vh;
+body {
+  height: 100vh;
 }
 
-.spinner-disc{
-    /* background-color: white; */
+.spinner-item.active .spinneritem-img {
+  filter: drop-shadow(0px -3px 10px rgba(35, 207, 212, 0.8));
 }
 
-.spinner-item:nth-child(1){
+.spinner-disc {
+  /* background-color: white; */
+}
+
+/* .spinner-item:nth-child(1){
     background-color: blue;
 }
 .spinner-item:nth-child(2){
@@ -23,4 +27,4 @@ body{
 }
 .spinner-item:nth-child(4){
     background-color: rgb(128, 0, 96);
-}
+} */
