@@ -14,7 +14,7 @@ class CSpinner {
         width: 100, // the width of a single item on the spinner
         height: 100, // the height of a single item on the spinner
         titleColor: "white", // color of spinner item title if any
-        titleFontSize: 20 // font size of the title
+        titleFontSize: 20, // font size of the title
       },
       button = {
         size: 40,
@@ -29,8 +29,12 @@ class CSpinner {
     this.spinnerDiscRadius = this.spinnerDiscSize / 2;
     this.spinnerItemWidth = spinnerItem.width;
     this.spinnerItemHeight = spinnerItem.height;
-    this.spinnerItemTitleColor  = spinnerItem.titleColor ? this.spinnerItemTitleColor:"white";
-    this.spinnerItemTitleFontSize  = spinnerItem.titleFontSize ? spinnerItem.titleFontSize:20;
+    this.spinnerItemTitleColor = spinnerItem.titleColor
+      ? this.spinnerItemTitleColor
+      : "white";
+    this.spinnerItemTitleFontSize = spinnerItem.titleFontSize
+      ? spinnerItem.titleFontSize
+      : 20;
     this.spinnerBtnSize = button.size;
 
     // setting up the spinner element
@@ -39,6 +43,7 @@ class CSpinner {
     this.spinnerItems = this.spinnerElement.querySelectorAll(".spinner-item");
     this.leftBtn = this.spinnerElement.querySelector(".left-btn");
     this.rightBtn = this.spinnerElement.querySelector(".right-btn");
+    this.spinnerBg = this.spinnerElement.querySelector(".spinner-bg");
 
     // GLOBAL VARIABLES
     this.itemInterAngle = 360 / this.spinnerItems.length;
@@ -56,6 +61,13 @@ class CSpinner {
 
     // giving the current active item the `active` class
     this.spinnerItems[this.curItemIndex].classList.add("active");
+
+    // setting up the background of the active element
+    if (this.spinnerBg) {
+      let src =
+        this.spinnerItems[this.curItemIndex].querySelector("input").value;
+      this.spinnerBg.querySelector("img").src = src;
+    }
   }
 
   #setSpinnerStyles() {
@@ -117,6 +129,25 @@ class CSpinner {
       }
     });
 
+    // setting up spinner background
+    let spinnerBg = this.spinnerElement.querySelector(".spinner-bg");
+    if (spinnerBg) {
+      spinnerBg.style = `
+      position: absolute;
+      left: 0;
+      top: 0;
+      width: 100%;
+      height: 100%;
+      `;
+
+      spinnerBg.querySelector("img").style = `
+      width: 100%;
+      height: 100%;
+      background-fit: cover;
+      filter: brightness(40%);
+      `;
+    }
+
     // setting up styles of buttons
     this.leftBtn.style = `
     color: white;
@@ -171,8 +202,10 @@ class CSpinner {
           ((this.totalAngleIncrease / this.itemInterAngle) %
             this.spinnerItems.length)) %
         this.spinnerItems.length;
-      console.log("left ", this.curItemIndex);
       this.spinnerItems[this.curItemIndex].classList.add("active");
+
+      // changing background
+      this.#changeBgImg();
     });
 
     this.rightBtn.addEventListener("click", (event) => {
@@ -187,9 +220,20 @@ class CSpinner {
 
       // this.curItemIndex = Math.abs(this.totalAngleIncrease / this.itemInterAngle) % this.spinnerItems.length;
       this.curItemIndex = (this.curItemIndex + 1) % this.spinnerItems.length;
-      console.log("right ", this.curItemIndex);
       this.spinnerItems[this.curItemIndex].classList.add("active");
+
+      // changing background
+      this.#changeBgImg();
     });
+  }
+
+  // function to change background image if setup
+  #changeBgImg() {
+    if (this.spinnerBg) {
+      let src =
+        this.spinnerItems[this.curItemIndex].querySelector("input").value;
+      this.spinnerBg.querySelector("img").src = src;
+    }
   }
 
   // utility functions
