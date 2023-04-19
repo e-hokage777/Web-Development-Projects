@@ -80,6 +80,7 @@ class CSpinner {
     justify-content: center;
     align-items: center;
     position: relative;
+    overflow: hidden;
     perspective: ${this.spinnerPerspective}px;
     `;
 
@@ -143,7 +144,7 @@ class CSpinner {
       spinnerBg.querySelector("img").style = `
       width: 100%;
       height: 100%;
-      background-fit: cover;
+      object-fit: cover;
       filter: brightness(40%);
       `;
     }
