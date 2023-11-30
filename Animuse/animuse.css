@@ -196,5 +196,6 @@ input[type="range"]{
   display: block;
   width: 2px;
   height: 5px;
-  background-color: #57acd2;
+  /* background-color: #57acd2; */
+  background-color: black;
 }

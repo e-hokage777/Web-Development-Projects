@@ -278,6 +278,12 @@ const musicList = [
     img_src: IMAGES_URL + "free.jpg",
     track_src: TRACKS_URL + "Rino Esposito x Adriano Pepe  Free.mp3",
   },
+  {
+    name: "Reminds me of you",
+    artist: "Dropgun Mindpunk ft SayWeCanFly",
+    img_src: IMAGES_URL + "reminds_me_of_u.jpg",
+    track_src: TRACKS_URL + "Dropgun  Mindpunk feat SayWeCanFly  Reminds Me Of You.mp3"
+  }
 ];
 
 window.onload = function () {
