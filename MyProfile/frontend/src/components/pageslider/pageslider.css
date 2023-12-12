@@ -1,0 +1,50 @@
+:root{
+    --trans-time-1: 0.5s;
+}
+
+.page-slider{
+    width: 100%;
+    height: 100%;
+    position: relative;
+    overflow: hidden;
+}
+
+.page-slider-inner{
+    min-width: 100%;
+    height: 100%;
+    display: flex;
+    transform: translateX(0%);
+    transition: all var(--trans-time-1);
+}
+
+.page-slider-indicators{
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 1.2rem 0;
+    gap: 1rem;
+    list-style: none;
+    margin: 0;
+}
+
+.page-slider-indicators *{
+    transition: all var(--trans-time-1);
+    cursor: pointer;
+}
+
+.page-slider-indicators *:hover{
+    transform: scale(1.3);
+}
+
+.page-slider-page{
+    width: 100%;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex: 1 0 auto;
+    transition: all var(--trans-time-1);
+}
