@@ -1,26 +1,22 @@
 import { Container, Row, Col } from "react-bootstrap";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faHouseCrack } from "@fortawesome/free-solid-svg-icons";
-import styled from "styled-components";
 
 import Modal from "react-bootstrap/Modal";
 import Button from "react-bootstrap/Button";
-import { Form } from "react-bootstrap";
-
-import axios from "axios";
 
 import { useState } from "react";
 
+// importing forms
+import TextAreaForm from "../forms/TextAreaForm.jsx";
+import MLTK_ENDPOINTS from "../configs/mltk_endpoint.js";
+
+import Loader from "../components/loader/Loader.jsx";
+
+// defining the base url
+const baseUrl = "http://localhost:5000/mlkit";
+
 function ProjectButton(props) {
-  // const container = styled.div`
-  //     display: flex;
-  //     flex-direction: column,
-  //     gap: 1rem;
-  //     align-items: center,
-  //     justify-content: center,
-  //     background-color: #f63,
-  //     cursor: pointer;
-  // `
   return (
     <div
       onClick={props.onClick}
@@ -40,39 +36,6 @@ function ProjectButton(props) {
   );
 }
 
-// form for textarea
-function TextAreaForm() {
-  const [ formData, setFormData ] = useState({tweet: ""});
-  // function to handle submitting
-  const handleSubmit = (event) => {
-    event.preventDefault();
-    // axios.post()
-  };
-
-  // function to update form data
-  const updateFormData = (event) => {
-    setFormData({ ...formData, [event.target.name]: event.target.value });
-  };
-
-  return (
-    <Form onSubmit={handleSubmit}>
-      <Form.Group className="mb-3" controlId="exampleForm.ControlTextarea1">
-        <Form.Label>Example textarea</Form.Label>
-        <Form.Control
-          as="textarea"
-          rows={3}
-          name="tweet"
-          value={formData.tweet}
-          onInput={updateFormData}
-        />
-      </Form.Group>
-      <Button variant="primary" type="submit">
-        Submit
-      </Button>
-    </Form>
-  );
-}
-
 function ProjectModal(props) {
   const [show, setShow] = useState(false);
 
@@ -85,12 +48,28 @@ function ProjectModal(props) {
         {props.title}
       </ProjectButton>
 
-      <Modal show={show} onHide={handleClose} centered>
+      <Modal
+        show={show}
+        onHide={handleClose}
+        centered
+        size="xl"
+        fullscreen="sm-down"
+      >
         <Modal.Header closeButton>
           <Modal.Title>Modal heading</Modal.Title>
         </Modal.Header>
         <Modal.Body>
-          <TextAreaForm />
+          <Row>
+            <Col xs={12} sm={6}>
+              <TextAreaForm endpoint={MLTK_ENDPOINTS["DISASTER_TWEETS"]} />
+            </Col>
+            <Col xs={12} sm={6}>
+              <div style={{width: "100%", height: "100%", position: "relative"}}>
+                <Loader/>
+                <h3 style={{color: "blue"}} onClick={()=>{console.log("something")}}>Your results here</h3>
+              </div>
+            </Col>
+          </Row>
         </Modal.Body>
         <Modal.Footer>
           <Button variant="secondary" onClick={handleClose}>
