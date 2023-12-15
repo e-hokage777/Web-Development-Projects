@@ -9,8 +9,10 @@ export default function TextAreaForm(props) {
   // function to handle submitting
   const handleSubmit = (event) => {
     event.preventDefault();
+    props.setRequestPending(true)
     make_request(props.endpoint, formData).then((response) => {
-      console.log(response);
+      props.setRequestPending(false)
+      props.setRequestResult(response.data);
     });
   };
 
