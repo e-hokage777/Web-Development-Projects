@@ -6,13 +6,16 @@ import make_request from "../services/make_request";
 
 export default function TextAreaForm(props) {
   const [formData, setFormData] = useState({ text: "" });
+  const [disableSubmit, toggleDisableSubmit] = useState(false)
   // function to handle submitting
   const handleSubmit = (event) => {
     event.preventDefault();
     props.setRequestPending(true)
+    toggleDisableSubmit(true)
     make_request(props.endpoint, formData).then((response) => {
       props.setRequestPending(false)
       props.setRequestResult(response.data);
+      toggleDisableSubmit(false)
     });
   };
 
@@ -24,7 +27,7 @@ export default function TextAreaForm(props) {
   return (
     <Form onSubmit={handleSubmit}>
       <Form.Group className="mb-3">
-        <Form.Label>text</Form.Label>
+        <Form.Label>{props.formMessage}</Form.Label>
         <Form.Control
           as="textarea"
           rows={3}
@@ -33,7 +36,7 @@ export default function TextAreaForm(props) {
           onInput={updateFormData}
         />
       </Form.Group>
-      <Button variant="primary" type="submit">
+      <Button variant="primary" type="submit" disabled={disableSubmit}>
         Submit
       </Button>
     </Form>

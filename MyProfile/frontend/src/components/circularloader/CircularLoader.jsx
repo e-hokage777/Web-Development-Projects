@@ -28,11 +28,6 @@ export default function CircularLoader(props) {
         className="inner"
         style={{ width: innerRadius, height: innerRadius }}
       >
-        {/* {parseFloat(props.value).toFixed(2) * 100}%
-        
-        <span style={{ fontSize: "10px", color: predictionColor}}>
-          {props.prediction ? "Positive" : "Negative"}
-        </span> */}
         {props.children}
       </div>
       <svg
@@ -41,12 +36,18 @@ export default function CircularLoader(props) {
         width={`${props.size}`}
         height={`${props.size}`}
       >
+        <defs>
+            <linearGradient id="loader-gradient">
+                <stop offset="0%" stopColor="#34c0eb"/>
+                <stop offset="100%" stopColor="#3467eb"/>
+            </linearGradient>
+        </defs>
         <circle
           className="load-circle"
           cx={`${props.size * 0.5}`}
           cy={`${props.size * 0.5}`}
           r={`${circleRadius}`}
-          stroke="pink"
+          stroke="url(#loader-gradient)"
           strokeWidth={`${innerOuterMargin * 0.5}`}
           strokeDasharray={`${circleCircumference}`}
           strokeLinecap="round"

@@ -10,7 +10,6 @@ import MLTKForm from "../../forms/MLTKForm";
 
 import PredictionResultsDisplay from "../../result_displays/PredictionResultsDisplay";
 
-
 export default function MLTKModal(props) {
   const [show, setShow] = useState(false);
   const [pending, setPending] = useState(false);
@@ -18,7 +17,6 @@ export default function MLTKModal(props) {
 
   const handleClose = () => setShow(false);
   const handleShow = () => setShow(true);
-
 
   return (
     <>
@@ -38,10 +36,15 @@ export default function MLTKModal(props) {
         </Modal.Header>
         <Modal.Body>
           <Row>
-            <Col xs={12} sm={6}>
-              <MLTKForm formtype="textarea" setRequestPending={setPending} setRequestResult={setRequestResult}/>
+            <Col className="p-3 border-end border-primary" xs={12} sm={6}>
+              <MLTKForm
+                formtype="textarea"
+                formMessage="Enter a tweet and I'll tell you the chances of it being a disaster tweet"
+                setRequestPending={setPending}
+                setRequestResult={setRequestResult}
+              />
             </Col>
-            <Col xs={12} sm={6}>
+            <Col className="p-3" xs={12} sm={6}>
               <div
                 style={{
                   width: "100%",
@@ -49,20 +52,23 @@ export default function MLTKModal(props) {
                   position: "relative",
                   display: "flex",
                   justifyContent: "center",
-                  alignItems: "center"
+                  alignItems: "center",
                 }}
-              >{
-                pending? <Loader />: ""
-              }
-               {!requestResult ? <h3>Your results here</h3>: <PredictionResultsDisplay prediction={requestResult["prediction"]} probability={requestResult["probability"]}/>}
+              >
+                {pending ? <Loader /> : ""}
+                {!requestResult ? (
+                  <h3>Your results here</h3>
+                ) : (
+                  <PredictionResultsDisplay
+                    prediction={requestResult["prediction"]}
+                    probability={requestResult["probability"]}
+                  />
+                )}
               </div>
             </Col>
           </Row>
         </Modal.Body>
         <Modal.Footer>
-          <Button variant="secondary" onClick={handleClose}>
-            Close
-          </Button>
         </Modal.Footer>
       </Modal>
     </>

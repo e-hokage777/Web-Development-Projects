@@ -6,6 +6,7 @@ export default function MLTKForm(props) {
     case "textarea":
       return (
         <TextAreaForm
+          formMessage={props.formMessage}
           endpoint={MLTK_ENDPOINTS["DISASTER_TWEETS"]}
           setRequestPending={props.setRequestPending}
           setRequestResult={props.setRequestResult}
