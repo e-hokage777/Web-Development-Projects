@@ -1,10 +1,8 @@
 import { useState } from "react";
 import { Modal, Row, Col } from "react-bootstrap";
-import Button from "react-bootstrap/Button";
 import IconButton from "../buttons/IconButton/IconButton";
 import Loader from "../loader/Loader";
 
-import TextAreaForm from "../../forms/TextAreaForm";
 import MLTK_ENDPOINTS from "../../configs/mltk_endpoint";
 import MLTKForm from "../../forms/MLTKForm";
 
@@ -40,6 +38,7 @@ export default function MLTKModal(props) {
               <MLTKForm
                 formtype="textarea"
                 formMessage="Enter a tweet and I'll tell you the chances of it being a disaster tweet"
+                endpoint={MLTK_ENDPOINTS["DISASTER_TWEETS"]}
                 setRequestPending={setPending}
                 setRequestResult={setRequestResult}
               />

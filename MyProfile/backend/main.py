@@ -11,6 +11,7 @@ from flask_cors import CORS
 
 ## importing ML functions
 from ml_tools.disaster_tweets_predictor.disaster_tweets_predictor import predict as disaster_tweet_predict
+from ml_tools.anime_face_generator.anime_face_generator import genetate_anime_face
 
 
 ## creating app
@@ -23,6 +24,10 @@ def predict_tweet():
     tweet = request.get_json()["text"]
     result = disaster_tweet_predict(tweet)
     return result
+
+@app.get("/mlkit/generate/anime_face")
+def return_generated_anime_face():
+    return genetate_anime_face()
 
 
 if __name__ == "__main__":
