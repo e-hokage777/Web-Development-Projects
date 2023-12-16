@@ -10,8 +10,6 @@ import PredictionResultsDisplay from "../../result_displays/PredictionResultsDis
 
 export default function MLTKModal(props) {
   const [show, setShow] = useState(false);
-  const [pending, setPending] = useState(false);
-  const [requestResult, setRequestResult] = useState(null);
 
   const handleClose = () => setShow(false);
   const handleShow = () => setShow(true);
@@ -35,35 +33,10 @@ export default function MLTKModal(props) {
         <Modal.Body>
           <Row>
             <Col className="p-3 border-end border-primary" xs={12} sm={6}>
-              <MLTKForm
-                formtype="textarea"
-                formMessage="Enter a tweet and I'll tell you the chances of it being a disaster tweet"
-                endpoint={MLTK_ENDPOINTS["DISASTER_TWEETS"]}
-                setRequestPending={setPending}
-                setRequestResult={setRequestResult}
-              />
+              {props.children[0]}
             </Col>
             <Col className="p-3" xs={12} sm={6}>
-              <div
-                style={{
-                  width: "100%",
-                  height: "100%",
-                  position: "relative",
-                  display: "flex",
-                  justifyContent: "center",
-                  alignItems: "center",
-                }}
-              >
-                {pending ? <Loader /> : ""}
-                {!requestResult ? (
-                  <h3>Your results here</h3>
-                ) : (
-                  <PredictionResultsDisplay
-                    prediction={requestResult["prediction"]}
-                    probability={requestResult["probability"]}
-                  />
-                )}
-              </div>
+              {props.children[1]}
             </Col>
           </Row>
         </Modal.Body>

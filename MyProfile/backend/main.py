@@ -6,12 +6,12 @@ utilities_path = os.path.join(os.getcwd(), "ml_tools", "utilities")
 sys.path.insert(0, utilities_path)
 
 
-from flask import Flask, request
+from flask import Flask, request, send_file
 from flask_cors import CORS
 
 ## importing ML functions
 from ml_tools.disaster_tweets_predictor.disaster_tweets_predictor import predict as disaster_tweet_predict
-from ml_tools.anime_face_generator.anime_face_generator import genetate_anime_face
+from ml_tools.anime_face_generator.anime_face_generator import generate_anime_face
 
 
 ## creating app
@@ -25,9 +25,10 @@ def predict_tweet():
     result = disaster_tweet_predict(tweet)
     return result
 
-@app.get("/mlkit/generate/anime_face")
+## endpoint for handling anime face generator requests
+@app.route("/mlkit/generate/anime_face", methods=["POST", "GET"])
 def return_generated_anime_face():
-    return genetate_anime_face()
+    return send_file(generate_anime_face(), mimetype="image/png", download_name="anime_face.png")
 
 
 if __name__ == "__main__":
