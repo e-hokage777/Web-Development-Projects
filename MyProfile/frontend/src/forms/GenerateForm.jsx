@@ -4,8 +4,8 @@ import formWrapper from "./form_wrapper";
 
 function GenerateForm(props) {
   return (
-    <Form onSubmit={props.onSubmit}>
-      <Button variant="primary" type="submit" disabled={props.disableSubmit}>
+    <Form onSubmit={props.onSubmit} className="d-flex justify-content-center">
+      <Button className="fs-5" variant="primary" type="submit" disabled={props.disableSubmit}>
         Generate
       </Button>
     </Form>

@@ -17,20 +17,38 @@ import AnimeFaceGenerator from "../components/projects/AnimeFAceGenerator.jsx";
 // defining the base url
 const baseUrl = "http://localhost:5000/mlkit";
 
+function Holder(props) {
+  if (Array.isArray(props.children)) {
+    return (
+      <Container fluid>
+        <Row>
+          {props.children.map((child, index) => (
+            <Col key={index} lg={4} md={6} xs={12} className="p-2">
+              {child}
+            </Col>
+          ))}
+        </Row>
+      </Container>
+    );
+  }
+  else{
+    return (
+      <Container fluid>
+        <Row>
+        <Col lg={4} md={6} xs={12}>
+              {props.children}
+            </Col>
+        </Row>
+      </Container>
+    )
+  }
+}
+
 export default function ProjectsPage() {
   return (
-    <Container fluid>
-      <Row>
-        <Col lg={4} md={6} xs={12}>
-          <DisasterTweets/>
-        </Col>
-        <Col lg={4} md={6} xs={12}>
-          <AnimeFaceGenerator/>
-        </Col>
-        <Col lg={4} md={6} xs={12}>
-          first
-        </Col>
-      </Row>
-    </Container>
+    <Holder>
+      <DisasterTweets />
+      <AnimeFaceGenerator />
+    </Holder>
   );
 }
