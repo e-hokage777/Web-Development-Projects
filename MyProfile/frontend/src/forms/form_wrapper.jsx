@@ -1,7 +1,7 @@
 import { useState } from "react";
 import make_request from "../services/make_request";
 
-function formWrapper(Form, initialFormData=null) {
+function formWrapper(Form, initialFormData=null, responseType="json") {
   const FormWrapper = (props) => {
     const [formData, setFormData] = useState(initialFormData);
     const [disableSubmit, toggleDisableSubmit] = useState(false);
@@ -10,7 +10,7 @@ function formWrapper(Form, initialFormData=null) {
       event.preventDefault();
       props.setRequestPending(true);
       toggleDisableSubmit(true);
-      make_request(props.endpoint, formData).then((response) => {
+      make_request(props.endpoint, formData, responseType).then((response) => {
         props.setRequestPending(false);
         props.setRequestResult(response ? response.data : null);
         toggleDisableSubmit(false);

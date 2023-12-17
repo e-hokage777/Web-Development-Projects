@@ -12,6 +12,6 @@ function GenerateForm(props) {
   );
 }
 
-export default formWrapper(GenerateForm);
+export default formWrapper(GenerateForm, null, "blob");
 
 

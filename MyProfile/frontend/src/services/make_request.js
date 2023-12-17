@@ -1,11 +1,12 @@
 import axios from "axios";
 
-async function make_request(url, data) {
+async function make_request(url, data, responseType) {
   try {
     let response = await axios({
       url,
       method: "post",
       data: data,
+      responseType: responseType
     });
 
     return response;
@@ -13,5 +14,6 @@ async function make_request(url, data) {
     console.log(err);
   }
 }
+
 
 export default make_request;
